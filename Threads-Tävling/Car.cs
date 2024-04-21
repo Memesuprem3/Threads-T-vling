@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,24 +8,29 @@ using System.Timers;
 
 namespace Threads_Tävling
 {
-    internal class Car
+    public class Car
     {
-        public string Name {  get; set; }
-        public double Speed { get; set; } = 120; // km/h
-        public double distance { get; set; } //km
+        public string Name { get; set; }
+        public double Speed { get; private set; } = 120; // km/h
+        public double Distance { get; private set; } = 0; // km
 
-        public Car(string Name) 
+        public Car(string name)
         {
-           Name = Name;
+            Name = name;
         }
 
-        public void Go(int length)
+        public void Drive(double distance)
         {
-            double time = length / Speed;
-            int Timeinmilisec = (int)(time * 3600 * 1000);
-            Thread.Sleep(Timeinmilisec);
-            distance += length;
+            Distance += distance;
+            
+            Console.WriteLine($"{Name} has driven {Distance:0.00} km. Current speed: {Speed} km/h");
+            Console.WriteLine("--------------------------------------------------------------------");
+           
         }
 
+        public void ReduceSpeed(double amount)
+        {
+            Speed = Math.Max(0, Speed - amount);
+        }
     }
 }

@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Race race = new Race();
+            race.AddCar(new Car("Saab 900"));
+            race.AddCar(new Car("Volvo 240"));
+           
+
+            race.Start();
         }
     }
 }
