@@ -129,7 +129,7 @@ namespace Threads_Tävling
             {
                 car.ReduceSpeed(1);
                 Console.WriteLine($"{car.Name}'s speed has been reduced due to engine trouble.");
-            }
+            } 
         }
 
         private void CheckStatus()
